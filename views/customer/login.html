@@ -1,4 +1,3 @@
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,17 +7,42 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="auth-bg">
-        <div class="auth-container">
-            <h2>Welcome Back!</h2>
-            <form id="loginForm">
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit" class="auth-btn">Login</button>
-            </form>
-            <div class="auth-links">
-                <p>New customer? <a href="/customer/register">Register here</a></p>
+    <div class="auth-bg login-page">
+        <a href="/" class="back-link">&larr; Back to Home</a>
+        <div class="login-wrapper">
+            <h1 class="brand">Kirana<span></span>Wala</span></h1>
+            <p class="brand-sub">Welcome back to your marketplace</p>
+
+            <div class="login-card">
+                <form id="loginForm">
+                    <label class="field-label" for="email">Email Address</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#9993;</span>
+                        <input type="email" id="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <label class="field-label" for="password">Password</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#128274;</span>
+                        <input type="password" id="password" placeholder="********" required>
+                    </div>
+
+                    <div class="actions-row">
+                        <label class="remember">
+                            <input type="checkbox" id="remember"> Remember me
+                        </label>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="auth-btn sign-btn">Sign In</button>
+
+                    <div class="separator"><span>OR</span></div>
+
+                    <p class="create-account">Don't have an account? <a href="/customer/register">Create one</a></p>
+                </form>
             </div>
+
+            <p class="tos-note">By signing in, you agree to our <a href="#">Terms of Service</a></p>
         </div>
     </div>
     <script>

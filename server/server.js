@@ -17,18 +17,45 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.static(path.join(__dirname, "../views")));
 
 // MongoDB Connection
-// Now process.env.MONGODB_URI should be correctly loaded from e:\KiranaWala\server\.env
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+// Use the connection string from .env. Mongoose v8+ ignores options like
+// useNewUrlParser/useUnifiedTopology, so don't pass them. Add listeners to
+// surface clearer diagnostics for connection state changes.
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connected to MongoDB successfully");
   })
   .catch((err) => {
-    console.error("MongoDB connection error:", err);
+    console.error("MongoDB initial connection error:", err);
   });
+
+// Better runtime diagnostics
+const db = mongoose.connection;
+db.on("connected", () => {
+  console.log("Mongoose connected to", sanitizeHostFromUri(process.env.MONGO_URI));
+});
+db.on("error", (err) => {
+  console.error("Mongoose connection error:", err);
+});
+db.on("disconnected", () => {
+  console.warn("Mongoose disconnected");
+});
+db.on("reconnected", () => {
+  console.log("Mongoose reconnected");
+});
+
+// Helper to avoid printing full URI with credentials in logs
+function sanitizeHostFromUri(uri) {
+  try {
+    if (!uri) return "(no uri)";
+    // mongodb+srv://host/... or mongodb://user:pass@host:port/db
+    const afterProto = uri.split("//")[1] || uri;
+    // Remove credentials if present
+    const withoutCreds = afterProto.includes("@") ? afterProto.split("@")[1] : afterProto;
+    return withoutCreds.split("/")[0];
+  } catch (e) {
+    return "(unknown host)";
+  }
+}
 
 // API Routes
 app.use("/api/customer", customerRoutes);

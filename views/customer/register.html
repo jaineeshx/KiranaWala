@@ -7,18 +7,40 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="auth-bg">
-        <div class="auth-container">
-            <h2>Customer Registration</h2>
-            <form id="registerForm">
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit" class="auth-btn">Register</button>
-            </form>
-            <div class="auth-links">
-                <p>Already have an account? <a href="/customer/login">Login here</a></p>
+    <div class="auth-bg login-page">
+        <a href="/" class="back-link">&larr; Back to Home</a>
+        <div class="login-wrapper">
+            <h1 class="brand">Kirana<span></span>Wala</span></h1>
+            <p class="brand-sub">Create your customer account</p>
+
+            <div class="login-card">
+                <form id="registerForm">
+                    <label class="field-label" for="username">Username</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#128100;</span>
+                        <input type="text" id="username" placeholder="yourname" required>
+                    </div>
+
+                    <label class="field-label" for="email">Email Address</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#9993;</span>
+                        <input type="email" id="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <label class="field-label" for="password">Password</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#128274;</span>
+                        <input type="password" id="password" placeholder="********" required>
+                    </div>
+
+                    <button type="submit" class="auth-btn sign-btn">Register</button>
+
+                    <div class="separator"><span>OR</span></div>
+                    <p class="create-account">Already have an account? <a href="/customer/login">Login</a></p>
+                </form>
             </div>
+
+            <p class="tos-note">By registering, you agree to our <a href="#">Terms of Service</a></p>
         </div>
     </div>
     <script>
