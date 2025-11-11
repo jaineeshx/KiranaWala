@@ -20,7 +20,8 @@ app.use(express.static(path.join(__dirname, "../views")));
 // Use the connection string from .env. Mongoose v8+ ignores options like
 // useNewUrlParser/useUnifiedTopology, so don't pass them. Add listeners to
 // surface clearer diagnostics for connection state changes.
-mongoose.connect(process.env.MONGO_URI)
+mongoose
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connected to MongoDB successfully");
   })
@@ -31,7 +32,10 @@ mongoose.connect(process.env.MONGO_URI)
 // Better runtime diagnostics
 const db = mongoose.connection;
 db.on("connected", () => {
-  console.log("Mongoose connected to", sanitizeHostFromUri(process.env.MONGO_URI));
+  console.log(
+    "Mongoose connected to",
+    sanitizeHostFromUri(process.env.MONGO_URI),
+  );
 });
 db.on("error", (err) => {
   console.error("Mongoose connection error:", err);
@@ -50,7 +54,9 @@ function sanitizeHostFromUri(uri) {
     // mongodb+srv://host/... or mongodb://user:pass@host:port/db
     const afterProto = uri.split("//")[1] || uri;
     // Remove credentials if present
-    const withoutCreds = afterProto.includes("@") ? afterProto.split("@")[1] : afterProto;
+    const withoutCreds = afterProto.includes("@")
+      ? afterProto.split("@")[1]
+      : afterProto;
     return withoutCreds.split("/")[0];
   } catch (e) {
     return "(unknown host)";
