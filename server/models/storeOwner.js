@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const bcrypt = require("bcrypt");
+// Use bcryptjs consistently across routes and model
+const bcrypt = require("bcryptjs");
 
 const storeOwnerSchema = new mongoose.Schema({
   username: {
@@ -48,17 +49,15 @@ const storeOwnerSchema = new mongoose.Schema({
 // Hash password before saving
 storeOwnerSchema.pre("save", async function (next) {
   // Only hash the password if it has been modified (or is new)
-  if (!this.isModified("password")) {
-    return next(); // Exit early if password hasn't changed
-  }
+  if (!this.isModified("password")) return next();
 
-  // --- Start of code that was inside the try block ---
-  const salt = await bcrypt.genSalt(10); // Generate salt
-  this.password = await bcrypt.hash(this.password, salt); // Hash the password
-  // No need to call next() here for async hooks unless returning early
-  // --- End of code that was inside the try block ---
+  // If the password already looks like a bcrypt hash (registration route pre-hashed it), skip re-hashing
+  // Bcrypt hashes start with $2a$, $2b$, or $2y$ followed by cost and salt marker
+  if (/^\$2[aby]\$\d{2}\$/.test(this.password)) return next();
 
-  // The try { ... } catch(error) { next(error); } wrapper should be completely gone.
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
 });
 
 // Method to compare password

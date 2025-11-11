@@ -7,27 +7,64 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="auth-bg">
-        <div class="auth-container">
-            <h2>Store Owner Registration</h2>
-            <form id="registerForm">
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <input type="text" id="storeName" placeholder="Store Name" required>
-                <input type="text" id="storeDescription" placeholder="Store Description" required>
-                <select id="storeCategory" required>
-                    <option value="">Select Store Category</option>
-                    <option value="Grocery">Grocery</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Fashion">Fashion</option>
-                    <option value="Home & Living">Home & Living</option>
-                </select>
-                <button type="submit" class="auth-btn">Register Store</button>
-            </form>
-            <div class="auth-links">
-                <p>Already have a store? <a href="/store-owner/login">Login here</a></p>
+    <div class="auth-bg login-page">
+        <a href="/" class="back-link">&larr; Back to Home</a>
+        <div class="login-wrapper">
+            <h1 class="brand">Kirana<span></span>Wala</span></h1>
+            <p class="brand-sub">Create your store owner account</p>
+
+            <div class="login-card">
+                <form id="registerForm">
+                    <label class="field-label" for="username">Username</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#128100;</span>
+                        <input type="text" id="username" placeholder="yourname" required>
+                    </div>
+
+                    <label class="field-label" for="email">Email Address</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#9993;</span>
+                        <input type="email" id="email" placeholder="you@store.com" required>
+                    </div>
+
+                    <label class="field-label" for="password">Password</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#128274;</span>
+                        <input type="password" id="password" placeholder="********" required>
+                    </div>
+
+                    <label class="field-label" for="storeName">Store Name</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#127970;</span>
+                        <input type="text" id="storeName" placeholder="e.g., KiranaWala Mart" required>
+                    </div>
+
+                    <label class="field-label" for="storeDescription">Store Description</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#9997;</span>
+                        <input type="text" id="storeDescription" placeholder="Short description" required>
+                    </div>
+
+                    <label class="field-label" for="storeCategory">Store Category</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#128717;</span>
+                        <select id="storeCategory" required style="width:100%;padding:14px 16px 14px 48px;border:1px solid #e5e5e5;border-radius:14px;background:#fff;font-size:0.95rem;">
+                            <option value="">Select Store Category</option>
+                            <option value="Grocery">Grocery</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Home & Living">Home & Living</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="auth-btn sign-btn">Register Store</button>
+
+                    <div class="separator"><span>OR</span></div>
+                    <p class="create-account">Already have a store? <a href="/store-owner/login">Login</a></p>
+                </form>
             </div>
+
+            <p class="tos-note">By registering, you agree to our <a href="#">Terms of Service</a></p>
         </div>
     </div>
     <script>
@@ -67,7 +104,7 @@
 
         function logout() {
             localStorage.removeItem('token');
-            window.location.href = '/'; // Changed this line to redirect to index page
+            window.location.href = '/';
         }
     </script>
 </body>

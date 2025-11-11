@@ -7,17 +7,34 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="auth-bg">
-        <div class="auth-container">
-            <h2>Store Owner Login</h2>
-            <form id="loginForm">
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit" class="auth-btn">Login</button>
-            </form>
-            <div class="auth-links">
-                <p>New store owner? <a href="/store-owner/register">Register here</a></p>
+    <div class="auth-bg login-page">
+        <a href="/" class="back-link">&larr; Back to Home</a>
+        <div class="login-wrapper">
+            <h1 class="brand">Kirana<span></span>Wala</span></h1>
+            <p class="brand-sub">Store Owner Portal</p>
+
+            <div class="login-card">
+                <form id="loginForm">
+                    <label class="field-label" for="email">Email Address</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#9993;</span>
+                        <input type="email" id="email" placeholder="you@store.com" autocomplete="email" required>
+                    </div>
+
+                    <label class="field-label" for="password">Password</label>
+                    <div class="input-row">
+                        <span class="icon-box" aria-hidden="true">&#128274;</span>
+                        <input type="password" id="password" placeholder="********" autocomplete="current-password" required>
+                    </div>
+
+                    <button type="submit" class="auth-btn sign-btn">Sign In</button>
+
+                    <div class="separator"><span>OR</span></div>
+                    <p class="create-account">New store owner? <a href="/store-owner/register">Create your store</a></p>
+                </form>
             </div>
+
+            <p class="tos-note">By signing in, you agree to our <a href="#">Terms of Service</a></p>
         </div>
     </div>
 
