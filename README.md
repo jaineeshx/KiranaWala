@@ -1,4 +1,4 @@
-# KiranaWala - Online Grocery Management System
+# KiranaWala - The Online Grocery Management System
 
 KiranaWala is a web-based platform connecting local store owners with customers for convenient online grocery shopping.
 
