@@ -6,7 +6,6 @@ const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 const customerRoutes = require("./routes/customerRoutes");
 const storeRoutes = require("./routes/storeRoutes");
-// const uri = "mongodb+srv://pateljaineesh08:wXvUcSbx1lDGx4a9@kiranawala.3r8ka.mongodb.net/KiranaWala?retryWrites=true&w=majority"; // Remove this line
 
 const app = express();
 
@@ -65,7 +64,7 @@ function sanitizeHostFromUri(uri) {
 
 // API Routes
 app.use("/api/customer", customerRoutes);
-app.use("/api/store", storeRoutes); // Make sure this line is present
+app.use("/api/store", storeRoutes); 
 
 // Page Routes
 app.get("/", (req, res) => {
@@ -106,7 +105,7 @@ app.get("/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
-const PORT = process.env.PORT || 3000; // Already using process.env here, which is good
+const PORT = process.env.PORT || 3000; 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
