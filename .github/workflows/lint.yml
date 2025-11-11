@@ -1,4 +1,4 @@
-name: Lint Code Base
+name: Lint Code Base 
 
 # Controls when the workflow will run
 on:
