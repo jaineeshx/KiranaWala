@@ -58,7 +58,7 @@ function sanitizeHostFromUri(uri) {
       ? afterProto.split("@")[1]
       : afterProto;
     return withoutCreds.split("/")[0];
-  } catch (e) {
+  } catch {
     return "(unknown host)";
   }
 }
