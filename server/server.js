@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "../views")));
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("Connected to MongoDB successfully");
+    console.log("Connected to MongoDB successfully        ");
   })
   .catch((err) => {
     console.error("MongoDB initial connection error:", err);
