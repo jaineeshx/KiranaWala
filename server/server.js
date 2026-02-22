@@ -7,8 +7,6 @@ require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 const customerRoutes = require("./routes/customerRoutes");
 const storeRoutes = require("./routes/storeRoutes");
 
-
-
 const app = express();
 
 // Middleware
@@ -24,7 +22,7 @@ app.use(express.static(path.join(__dirname, "../views")));
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("Connected to MongoDB successfully        ");
+    console.log("Connected to MongoDB successfully");
   })
   .catch((err) => {
     console.error("MongoDB initial connection error:", err);
