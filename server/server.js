@@ -7,6 +7,9 @@ require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 const customerRoutes = require("./routes/customerRoutes");
 const storeRoutes = require("./routes/storeRoutes");
 
+console.log(lintFail);
+const lintFail = "fail";
+
 const app = express();
 
 // Middleware
