@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require("express")
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
@@ -7,8 +7,7 @@ require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 const customerRoutes = require("./routes/customerRoutes");
 const storeRoutes = require("./routes/storeRoutes");
 
-console.log(lintFail);
-const lintFail = "fail";
+
 
 const app = express();
 
