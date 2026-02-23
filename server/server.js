@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require("path")
+const path = require("path");
 // Specify the path to the .env file relative to this server.js file
 require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 const customerRoutes = require("./routes/customerRoutes");
